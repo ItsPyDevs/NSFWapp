@@ -1,0 +1,65 @@
+#:kivy 2.3.0
+
+<MainScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        
+        BoxLayout:
+            size_hint: (1, 1)
+            Image:
+                id: image
+                size_hint: (1, 1)
+                allow_stretch: True
+                keep_ratio: True
+                
+        BoxLayout:
+            size_hint_y: None
+            height: 50
+            
+            Button:
+                text: 'Fetch'
+                size_hint: (None, None)
+                size: (100, 50)
+                on_press: root.fetch_image(self)
+            
+            Button:
+                text: 'Save'
+                size_hint: (None, None)
+                size: (100, 50)
+                on_press: root.save_image(self)
+                
+            Button:
+                text: 'Manage Tags'
+                size_hint: (None, None)
+                size: (150, 50)
+                on_press: root.go_to_tag_manager(self)
+
+<TagManagerScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        
+        BoxLayout:
+            id: tags_layout
+            orientation: 'vertical'
+            size_hint_y: None
+            height: self.minimum_height
+        
+        BoxLayout:
+            size_hint_y: None
+            height: 50
+            
+            TextInput:
+                id: tag_input
+                size_hint: (0.7, None)
+                height: 40
+            Button:
+                text: 'Add Tag'
+                size_hint: (0.15, None)
+                height: 40
+                on_press: root.add_tag(self)
+        
+        Button:
+            text: 'Back'
+            size_hint: (None, None)
+            size: (100, 50)
+            on_press: root.go_to_main(self)
